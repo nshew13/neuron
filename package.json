@@ -17,6 +17,7 @@
     "vite": "^7.1.10"
   },
   "dependencies": {
+    "@shoelace-style/shoelace": "^2.20.1",
     "ag-grid-community": "^34.2.0"
   }
 }

@@ -2,11 +2,11 @@ import {
 	AllCommunityModule,
 	ModuleRegistry,
 	createGrid,
-	themeBalham,
 	type GridOptions,
 	type ValueFormatterFunc,
 	type ValueFormatterParams,
 } from 'ag-grid-community';
+import {DialogDetails} from './DialogDetails.js';
 import {Neuron} from './Neuron.js';
 
 
@@ -21,6 +21,8 @@ import {Neuron} from './Neuron.js';
 
 	const formatterRate: ValueFormatterFunc = (params: ValueFormatterParams) => FORMAT_CURRENCY.format(params.value);
 
+	const dialogDetails = new DialogDetails('sl-dialog[data-details]');
+
 	function init () {
 		ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -32,23 +34,21 @@ import {Neuron} from './Neuron.js';
 		};
 
 		const gridOptions: GridOptions = {
-			columnTypes,
 			autoSizeStrategy: {
 				type: 'fitCellContents',
 			},
+			columnTypes,
 			pagination: true,
 			paginationPageSize: 50,
 			paginationPageSizeSelector: [25, 50, 100, 250],
-			theme: themeBalham,
 			rowData: [],
+
 			columnDefs: [
-				{
-					headerName: 'Entity ID',
-					field: 'matched_id',
-				},
 				{
 					headerName: 'Entity Name',
 					field: 'entity_name',
+					cellClass: 'clickable',
+					onCellClicked: (e) => dialogDetails.show(e),
 				},
 				{
 					headerName: 'Rate',

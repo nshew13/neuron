@@ -1,3 +1,5 @@
+@import '@shoelace-style/shoelace/dist/themes/light.css';
+
 body {
     margin: 0;
     padding: 0;
@@ -8,11 +10,20 @@ body {
 }
 
 .ag-row-even {
-    background-color: rgba(0 0 0 / 0.15);
+    background-color: rgba(0 0 0 / 0.05);
 }
 
 .ag-cell-value {
     &.right-align {
         text-align: right;
     }
+
+    &.clickable {
+        cursor: pointer;
+    }
+}
+
+/* hide custom elements (i.e., Shoelace) until registered */
+:not(:defined) {
+    visibility: hidden;
 }
