@@ -1,0 +1,22 @@
+{
+  "name": "neuron",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "private": "true",
+  "scripts": {
+    "dev": "vite dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.15.0",
+  "devDependencies": {
+    "@types/node": "^24.8.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.10"
+  },
+  "dependencies": {
+    "ag-grid-community": "^34.2.0"
+  }
+}

@@ -1,0 +1,67 @@
+import secrets from '../secrets.json' with {type: 'json'};
+// import data from './data.json' with {type: 'json'};
+import type {GridApi} from 'ag-grid-community';
+
+export class Neuron {
+	private API_BASE = 'https://neuron.serifhealth.com/api/rates/v1?network_template_ids=07c56f6b-82cd-44a4-af42-d570b6ae89c6&limit=1000&codes=99203';
+	private readonly API_KEY: string = '';
+
+	/**
+	 * calls API for given endpoint
+	 *
+	 * In a real scenario, this method would take additional parameters, including,
+	 * for example, the endpoint to append to API_BASE. Alternatively, we may
+	 * build out further layers of abstraction, depending on repeated use cases.
+	 *
+	 * @param method
+	 * @returns {Promise<Response>}
+	 */
+	protected callApi = async (method = 'GET'): Promise<Response> => {
+		if (!this.API_KEY) {
+			throw new Error('Missing API key');
+		}
+
+		const headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		headers.append('X-API-KEY', this.API_KEY);
+
+		const response = await fetch(
+			this.API_BASE,
+			{
+				method,
+				headers,
+			}
+		);
+
+		if (!response.ok) {
+			throw new Error(`callApi status: ${response.status}`);
+		}
+
+		return response;
+	};
+
+	protected loadData = async () => {
+		const response = await this.callApi();
+		if (!response.ok) {
+			throw new Error(`loadJokes status: ${response.status}`);
+		}
+
+		return await response.json();
+
+		// return data;
+	};
+
+	constructor (gridApi: GridApi) {
+		this.API_KEY = (secrets?.API_KEY ?? '');
+
+		if (!gridApi) {
+			throw new Error('Missing AG Grid');
+		}
+
+		this.loadData().then(rowData => {
+			gridApi.updateGridOptions({
+				rowData: rowData?.['99203']?.rates ?? []
+			});
+		});
+	}
+}

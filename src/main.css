@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#myGrid {
+    height: 100vh;
+}
+
+.ag-row-even {
+    background-color: rgba(0 0 0 / 0.15);
+}
+
+.ag-cell-value {
+    &.right-align {
+        text-align: right;
+    }
+}
