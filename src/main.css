@@ -5,8 +5,14 @@ body {
     padding: 0;
 }
 
-#myGrid {
+main {
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#myGrid {
+    flex: 1 0 0;
 }
 
 .ag-row-even {
@@ -20,6 +26,10 @@ body {
 
     &.clickable {
         cursor: pointer;
+    }
+
+    &.warning {
+        background-color: rgba(255 99 132 / 0.5);
     }
 }
 
