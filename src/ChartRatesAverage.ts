@@ -56,7 +56,7 @@ export class ChartRatesAverage extends ChartRates {
 					position: 'left',
 					type: 'number',
 					title: {
-						text: '% Avg Rate',
+						text: 'Avg Rate',
 					},
 					label: {
 						formatter: (data) => Format.CURRENCY.format(data.value),

@@ -42,6 +42,12 @@ main {
     display: none;
 }
 
+.chart-toggles {
+    display: flex;
+    gap: 1em;
+    margin: 1em;
+}
+
 .spinner-container {
     text-align: center;
     font-size: 300%;

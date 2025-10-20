@@ -39,12 +39,12 @@ export class ChartRates extends Chart {
 
 	protected static calculateAverage = (list: TRegionScheduleMap): IRegionScheduleAverage[] => {
 		const result: IRegionScheduleAverage[] = [];
-		list.forEach((value, key, map) => {
-			const total = value.values.reduce((total, rate) => total += rate, 0);
+		list.forEach(value => {
+			const cumulativeValue = value.values.reduce((total, rate) => total + rate, 0);
 
 			result.push({
 				...value,
-				average: total / value.values.length,
+				average: cumulativeValue / value.values.length,
 			});
 		});
 
