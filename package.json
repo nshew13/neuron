@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.20.1",
+    "ag-charts-community": "^12.2.0",
     "ag-grid-community": "^34.2.0"
   }
 }

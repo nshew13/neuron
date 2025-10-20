@@ -11,7 +11,7 @@ main {
     flex-direction: column;
 }
 
-#myGrid {
+#dataGrid {
     flex: 1 0 0;
 }
 
@@ -36,4 +36,14 @@ main {
 /* hide custom elements (i.e., Shoelace) until registered */
 :not(:defined) {
     visibility: hidden;
+}
+
+.hide-while-loading {
+    display: none;
+}
+
+.spinner-container {
+    text-align: center;
+    font-size: 300%;
+    width: 100%;
 }

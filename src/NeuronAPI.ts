@@ -3,7 +3,7 @@ import secrets from '../secrets.json' with {type: 'json'};
 import type {GridApi} from 'ag-grid-community';
 import type {IRateRecord} from './types/IRateRecord.js';
 
-export class Neuron {
+export class NeuronAPI {
 	private API_BASE = 'https://neuron.serifhealth.com/api/rates/v1?network_template_ids=07c56f6b-82cd-44a4-af42-d570b6ae89c6&limit=1000&codes=99203';
 	private readonly API_KEY: string = '';
 
@@ -41,28 +41,16 @@ export class Neuron {
 		return response;
 	};
 
-	protected async loadData () {
+	constructor () {
+		this.API_KEY = (secrets?.API_KEY ?? '');
+	}
+
+	async loadData (): Promise<Record<string, unknown>> {
 		const response = await this.callApi();
 		if (!response.ok) {
 			throw new Error(`loadJokes status: ${response.status}`);
 		}
 
-		return await response.json();
-
-		// return data;
+		return response.json();
 	};
-
-	constructor (gridApi: GridApi) {
-		this.API_KEY = (secrets?.API_KEY ?? '');
-
-		if (!gridApi) {
-			throw new Error('Missing AG Grid');
-		}
-
-		this.loadData().then(rowData => {
-			gridApi.updateGridOptions({
-				rowData: (rowData?.['99203']?.rates as IRateRecord[]) ?? []
-			});
-		});
-	}
 }

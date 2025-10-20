@@ -6,9 +6,27 @@
   <link rel="stylesheet" href="main.css" />
 </head>
 <body>
-  <main>
-    <h1>CPT Code 99203</h1>
-    <div id="myGrid"></div>
+<h1>CPT Code 99203</h1>
+
+<div class="spinner-container">
+  <sl-spinner></sl-spinner>
+</div>
+
+<main class="hide-while-loading">
+    <sl-drawer label="Rate: Average" placement="bottom">
+      <div id="chartRateAverage"></div>
+    </sl-drawer>
+
+    <sl-drawer label="Rate: Percentage Baseline" placement="bottom">
+      <div id="chartRateBaseline"></div>
+    </sl-drawer>
+
+    <div>
+      <sl-button data-target="chartRateAverage">Rate: Average</sl-button>
+      <sl-button data-target="chartRateBaseline">Rate: Percentage Baseline</sl-button>
+    </div>
+
+    <div id="dataGrid"></div>
   </main>
 
   <sl-dialog label="Entity Details" data-details>
