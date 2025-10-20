@@ -35,6 +35,11 @@ To see the result
 
 I developed in Firefox and tested in Chrome.
 
+### Screens
+[<img src="./docs/table.png" width="300" alt="table" />](docs/table.png)
+[<img src="./docs/chart-rate-avg.png" width="300" alt="chart: rate average" />](docs/chart-rate-avg.png)
+[<img src="./docs/chart-pct-baseline.png" width="300" alt="chart: rate average" />](docs/chart-pct-baseline.png)
+
 ## Known issues and unfinished work
 
 I couldn't get `<sl-icon>` to work. I'm sure it's just a matter of making the SVG assets available to the DOM, but 
